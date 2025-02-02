@@ -3,26 +3,15 @@ This repository build a Logistic Regression, using a Neural Network mindset to p
 
 **Mathematical expression of the algorithm**:
 
-For one example $x^{(i)}$:
+For one example x^(i):
 
-$$
-z^{(i)} = w^T x^{(i)} + b \tag{1}
-$$
-
-$$
-\hat{y}^{(i)} = a^{(i)} = \text{sigmoid}(z^{(i)}) \tag{2}
-$$
-
-$$
-\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)})  \log(1-a^{(i)}) \tag{3}
-$$
+1. z^(i) = w^T x^(i) + b
+2. y_hat^(i) = a^(i) = sigmoid(z^(i))
+3. L(a^(i), y^(i)) = -y^(i) log(a^(i)) - (1 - y^(i)) log(1 - a^(i))
 
 The cost is then computed by summing over all training examples:
 
-$$
-J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)}) \tag{6}
-$$
-
+J = (1/m) * Σ [L(a^(i), y^(i))] for i = 1 to m
 
 **Key steps**:
 
