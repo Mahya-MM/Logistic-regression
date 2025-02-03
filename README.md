@@ -6,7 +6,7 @@ This repository implements **Logistic Regression** using a **Neural Network appr
 
 The logistic regression model is defined as follows:  
 
-For a single example \( x^{(i)} \):  
+For a single example $x^{(i)}$:  
 
 $$
 z^{(i)} = w^T x^{(i)} + b
