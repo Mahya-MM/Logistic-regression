@@ -1,39 +1,56 @@
-# Logistic-regression
-This repository build a Logistic Regression, using a Neural Network mindset to perform binary classification.
+# Logistic Regression with a Neural Network Mindset  
 
-**Mathematical expression of the algorithm**:
+This repository implements **Logistic Regression** using a **Neural Network approach** to perform **binary classification**.  
 
-For one example x^(i):
+## Mathematical Formulation  
 
-1. z^(i) = w^T x^(i) + b
-2. y_hat^(i) = a^(i) = sigmoid(z^(i))
-3. L(a^(i), y^(i)) = -y^(i) log(a^(i)) - (1 - y^(i)) log(1 - a^(i))
+The logistic regression model is defined as follows:  
 
-The cost is then computed by summing over all training examples:
+For a single example \( x^{(i)} \):  
 
-J = (1/m) * Σ [L(a^(i), y^(i))] for i = 1 to m
+$$
+z^{(i)} = w^T x^{(i)} + b
+$$
 
-**Key steps**:
+Applying the **sigmoid activation function**:  
 
-This repository carry out the following steps: 
-- Define the model structure (such as number of input features).
-- Initialize the parameters of the model.
-- Learn the parameters for the model by minimizing the cost. 
-  Loop:
-    - Calculate current loss (forward propagation)
-    - Calculate current gradient (backward propagation)
-    - Update parameters (gradient descent)
-- Use the learned parameters to make predictions (on the test set)
-- Analyse the results and conclude.
+$$
+\hat{y}^{(i)} = a^{(i)} = \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}}
+$$
 
-These steps build separately and integrate into one function called `model()`.
+The **loss function** for one training example:  
 
-**Dataset**:
-Given dataset ("train_catvnoncat.h5" and "test_catvnoncat.h5") containing:
-- a training set of m_train images labeled as cat (y=1) or non-cat (y=0).
-- a test set of m_test images labeled as cat or non-cat .
+$$
+L(a^{(i)}, y^{(i)}) = - y^{(i)} \log(a^{(i)}) - (1 - y^{(i)}) \log(1 - a^{(i)})
+$$
 
-Each image is of shape (num_px, num_px, 3) where 3 is for the 3 channels (RGB). Thus, each image is square (height = num_px) and (width = num_px).
-You will build a simple image-recognition algorithm that can correctly classify pictures as cat or non-cat.
+The **cost function** (averaging over all training examples):  
 
-Data set downloaded from deeplearning specialization coursea course.
+$$
+J = \frac{1}{m} \sum_{i=1}^{m} L(a^{(i)}, y^{(i)})
+$$
+
+## Key Steps  
+
+This repository follows these steps to implement **logistic regression**:  
+
+1. **Define the model structure** (e.g., number of input features).  
+2. **Initialize model parameters** (\( w \) and \( b \)).  
+3. **Train the model** by minimizing the cost function using **gradient descent**:  
+   - Compute the loss (**forward propagation**).  
+   - Compute the gradients (**backward propagation**).  
+   - Update parameters using **gradient descent**.  
+4. **Make predictions** on the test set.  
+5. **Analyze results and conclusions**.  
+
+All steps are combined into a single function **`model()`**.  
+
+## Dataset  
+
+The dataset used in this project (**train_catvnoncat.h5** and **test_catvnoncat.h5**) consists of:  
+
+- A **training set** of \( m_{\text{train}} \) images labeled as **cat (y = 1)** or **non-cat (y = 0)**.  
+- A **test set** of \( m_{\text{test}} \) images labeled similarly.  
+- Each image has shape **(num_px, num_px, 3)** (for RGB channels), meaning all images are square (**height = width = num_px**).  
+
+This dataset was obtained from the **Deep Learning Specialization course on Coursera**.  
