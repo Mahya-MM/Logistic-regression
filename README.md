@@ -1,56 +1,51 @@
 # Logistic Regression with a Neural Network Mindset  
 
-This repository implements **Logistic Regression** using a **Neural Network approach** to perform **binary classification**.  
+This repository implements **Logistic Regression** using a **Neural Network approach** to perform **binary classification** (cat vs. non-cat). The implementation is inspired by the **Deep Learning Specialization by Andrew Ng**.
 
-## Mathematical Formulation  
+---
 
-The logistic regression model is defined as follows:  
+## 🚀 Project Overview  
 
-For a single example $x^{(i)}$:  
+Logistic Regression is a fundamental machine learning algorithm used for binary classification. This implementation follows a **Neural Network mindset**, using:  
+✅ **Vectorized computations** for efficiency.  
+✅ **Gradient descent optimization** for learning.  
+✅ **Visualization of the cost function** across iterations.  
+✅ **Analysis of different learning rates** to improve performance.  
 
-$$
-z^{(i)} = w^T x^{(i)} + b
-$$
+---
 
-Applying the **sigmoid activation function**:  
+## 📂 Repository Structure  
 
-$$
-\hat{y}^{(i)} = a^{(i)} = \sigma(z^{(i)}) = \frac{1}{1 + e^{-z^{(i)}}}
-$$
+- **`L_R.ipynb`** → Jupyter Notebook containing the full implementation, step-by-step explanations, and visualizations.  
+- **`lr_utils.py`** → Helper functions for loading and processing the dataset.  
+- **`datasets/train_catvnoncat.h5`** → Training dataset.  
+- **`datasets/test_catvnoncat.h5`** → Test dataset.  
+- **`images`** → For further analysis and testing the trained logistic regression with other images.
+---
 
-The **loss function** for one training example:  
+## 🏗️ Model Architecture  
 
-$$
-L(a^{(i)}, y^{(i)}) = - y^{(i)} \log(a^{(i)}) - (1 - y^{(i)}) \log(1 - a^{(i)})
-$$
+The logistic regression model follows these steps:  
 
-The **cost function** (averaging over all training examples):  
+1️⃣ **Initialize Parameters**: Set $W$ and $b$ to zero.  
 
-$$
-J = \frac{1}{m} \sum_{i=1}^{m} L(a^{(i)}, y^{(i)})
-$$
+2️⃣ **Forward Propagation**: Compute $Z = W^T X + b$, then apply the **sigmoid activation function**:  
+   $\hat{Y} = \sigma(Z) = \frac{1}{1 + e^{-Z}}$ 
 
-## Key Steps  
+3️⃣ **Compute Cost**: Use **binary cross-entropy loss** to measure the difference between predictions and true labels:  
+   $J = -\frac{1}{m} \sum \left( Y \log(\hat{Y}) + (1-Y) \log(1-\hat{Y}) \right)$  
 
-This repository follows these steps to implement **logistic regression**:  
+4️⃣ **Backward Propagation**: Compute gradients \( dW \) and \( db \) to determine how to adjust parameters.  
 
-1. **Define the model structure** (e.g., number of input features).  
-2. **Initialize model parameters** (\( w \) and \( b \)).  
-3. **Train the model** by minimizing the cost function using **gradient descent**:  
-   - Compute the loss (**forward propagation**).  
-   - Compute the gradients (**backward propagation**).  
-   - Update parameters using **gradient descent**.  
-4. **Make predictions** on the test set.  
-5. **Analyze results and conclusions**.  
+5️⃣ **Update Parameters**: Apply **gradient descent** to optimize \( W \) and \( b \):  
+   $W = W - \alpha dW, \quad b = b - \alpha db$  
 
-All steps are combined into a single function **`model()`**.  
+6️⃣ **Make Predictions**: Convert probabilities into binary labels:
+Make Predictions: Convert probabilities into binary labels: 
+ŷ =
+{1,  if A ≥ 0.5  
+0,  if A < 0.5}
 
-## Dataset  
 
-The dataset used in this project (**train_catvnoncat.h5** and **test_catvnoncat.h5**) consists of:  
-
-- A **training set** of \( m_{\text{train}} \) images labeled as **cat (y = 1)** or **non-cat (y = 0)**.  
-- A **test set** of \( m_{\text{test}} \) images labeled similarly.  
-- Each image has shape **(num_px, num_px, 3)** (for RGB channels), meaning all images are square (**height = width = num_px**).  
-
-This dataset was obtained from the **Deep Learning Specialization course on Coursera**.  
+   🤝 Contributing
+Feel free to fork, submit issues, or contribute improvements! 🚀
